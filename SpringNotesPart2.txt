@@ -1,0 +1,13 @@
+Singleton: Only one bean per Spring container (Default)
+Prototype: New bean for each request/reference
+
+Request: New bean per servlet request
+Session: New bean per Session
+Global Session: New bean per Global HTTP Session
+
+Defined using the 'scope' attribute
+
+
+Aware Interfaces:
+ApplicationContextAware, BeanNameAware, etc.
+Aware Interface Methods run before the rest of the code

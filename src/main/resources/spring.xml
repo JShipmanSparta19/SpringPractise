@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.sparta.jas"/>
+
+    <!--<bean id="parentTriangle" class="com.sparta.jas.Triangle2" abstract="true">-->
+        <!--<property name="points">-->
+            <!--<list>-->
+                <!--<ref bean="pointA"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="triangle1" class="com.sparta.jas.Triangle2" parent="parentTriangle">-->
+        <!--<property name="points">-->
+            <!--<list merge="true">-->
+                <!--<ref bean="pointB"/>-->
+                <!--<ref bean="pointC"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="triangle2" class="com.sparta.jas.Triangle2" parent="parentTriangle">-->
+        <!--<property name="pointB" ref="pointB"/>-->
+        <!--<property name="pointD" ref="pointD"/>-->
+    <!--</bean>-->
+
+    <bean id="pointA" class="com.sparta.jas.Point">
+        <qualifier value="circleRelated"/>
+        <property name="x" value="${pointA.pointX}"/>
+        <property name="y" value="${pointA.pointY}"/>
+    </bean>
+    <bean id="pointB" class="com.sparta.jas.Point">
+        <property name="x" value="-20"/>
+        <property name="y" value="0"/>
+    </bean>
+    <bean id="pointC" class="com.sparta.jas.Point">
+        <property name="x" value="0"/>
+        <property name="y" value="20"/>
+    </bean>
+    <!--<bean id="pointD" class="com.sparta.jas.Point">-->
+        <!--<property name="x" value="0"/>-->
+        <!--<property name="y" value="-20"/>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.sparta.jas.MyBeanFactoryPP"/>-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="pointsConfig.properties"/>
+    </bean>
+
+    <!--<bean id="circle" class="com.sparta.jas.Circle">-->
+        <!--&lt;!&ndash;<property name="center" ref="pointA"/>&ndash;&gt;-->
+    <!--</bean>-->
+
+    <!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
+
+    <!--<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>-->
+
+
+
+    <!--<bean class="com.sparta.jas.DisplayNameBeanPostProcessor"/>-->
+</beans>
+
+
+
+
+
+
+
+
+
+<!--<beans>-->
+    <!--<bean id="triangle" class="com.sparta.jas.Triangle">-->
+        <!--&lt;!&ndash; Using a setter &ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="type" value="Equilateral"/>&ndash;&gt;-->
+
+        <!--&lt;!&ndash; Using a Constructor &ndash;&gt;-->
+        <!--<constructor-arg value="Equilateral"/>-->
+        <!--<constructor-arg type="int" value="20"/>-->
+
+        <!--&lt;!&ndash; Spring can intelligently convert between datatypes &ndash;&gt;-->
+        <!--&lt;!&ndash; Need to be careful as spring looks at the datatype &ndash;&gt;-->
+        <!--&lt;!&ndash; Use the type identifier to help fix this &ndash;&gt;-->
+        <!--&lt;!&ndash; Can also use index. Tells it to look for a constructor with the given number of indices. (0 indexed) &ndash;&gt;-->
+    <!--</bean>-->
+<!--</beans>-->

@@ -1,0 +1,31 @@
+Dependency Injection:
+Separating out the instantiation of objects from the code that utilises them.
+EG: Having some code that draws a shape.
+- The Drawing class does not have the type of shape hardcoded
+- Another class instantiates the shape and then passes it to the drawing class.
+
+
+
+
+
+Inner Beans:
+If a bean is only needed in one place, can make it an inner bean and not give it an id.
+EG:
+<property name="pointB">
+	<bean class="com.sparta.jas.Point">
+		<property name="x" value="-20"/>
+		<property name="y" value="0"/>
+	</bean>
+</property>
+
+
+
+Autowiring:
+Allows you to check for beans based on the member variables of the class.
+So, if there was a variable called "pointA", it would check for a bean of the same id.
+EG:
+<bean id="triangle" class="..." autowire="byName">
+	...
+</bean>
+
+Can also autowire byType, constructor
